@@ -1,0 +1,27 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  padding: 50px;
+  width: 500px;
+  margin: 0 auto;
+
+  & {
+    background: #007cba;
+  }
+
+  .logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    margin: 0 auto;
+  }
+
+  .col-form-label {
+    margin-right: 5px;
+
+    & {
+      color: white;
+    }
+  }
+}
