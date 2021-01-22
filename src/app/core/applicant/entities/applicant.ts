@@ -1,11 +1,11 @@
 import { Technology } from '../../technology/entities/technology';
 
 export class Applicant {
-  id: number;
-  name: string;
-  age: number;
-  linkedin: string;
-  technologies: Technology[];
+  id = null;
+  name = '';
+  age = null;
+  linkedin = '';
+  technologies: Technology[] = [];
 
   constructor(object ?: any) {
     if (object) {
