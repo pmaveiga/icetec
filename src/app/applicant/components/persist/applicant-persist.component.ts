@@ -34,7 +34,7 @@ export class ApplicantPersistComponent implements OnInit {
     });
 
     this.technologyService.list().subscribe((response: any) => {
-      if (response.data) {
+      if (response && response.data) {
         this.technologies = response.data;
         this.getSelected();
       }

@@ -30,6 +30,11 @@ export abstract class AbstractService<E> {
     return this.http.get(`${ this.baseUrl }/${ id }`).pipe(map((response: any) => new this.object(response.data || response)));
   }
 
+  find(id: number): Observable<E> {
+    // @ts-ignore
+    return this.http.get(`${ this.baseUrl }/find/${ id }`);
+  }
+
   save(object: E | any): Observable<E> {
     if (object.hasOwnProperty('id')) {
       return this.http.put<E>(`${ this.baseUrl }/${ object.id }`, object, this.httpOptions);
