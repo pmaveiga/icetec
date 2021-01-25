@@ -14,8 +14,8 @@ export abstract class AbstractService<E> {
 
   public baseUrl: string;
 
-  protected constructor(protected http: HttpClient, private path: string, protected object: E) {
-    this.baseUrl = `${ environment.serverUrl }/${ path }/`;
+  protected constructor(protected http: HttpClient, private path: string, protected object?: E | any) {
+    this.baseUrl = `${ environment.serverUrl }/${ path }`;
   }
 
   list(): Observable<E> {
@@ -27,19 +27,19 @@ export abstract class AbstractService<E> {
 
   get(id: number): Observable<E> {
     // @ts-ignore
-    return this.http.get(`${ this.baseUrl }${ id }`).pipe(map((response: any) => new this.object(response.data || response)));
+    return this.http.get(`${ this.baseUrl }/${ id }`).pipe(map((response: any) => new this.object(response.data || response)));
   }
 
-  save(object: E): Observable<E> {
-    if (object['id']) {
-      return this.http.put<E>(`${ this.baseUrl }${ object['id'] }`, object, this.httpOptions);
+  save(object: E | any): Observable<E> {
+    if (object.hasOwnProperty('id')) {
+      return this.http.put<E>(`${ this.baseUrl }/${ object.id }`, object, this.httpOptions);
     }
 
     return this.http.post<E>(this.baseUrl, object, this.httpOptions);
   }
 
   delete(id: number): Observable<boolean> {
-    return this.http.delete(`${ this.baseUrl }${ id }`, { headers: this.httpOptions.headers })
+    return this.http.delete(`${ this.baseUrl }/${ id }`, { headers: this.httpOptions.headers })
       .pipe(map((response: any) => response.ok));
   }
 }

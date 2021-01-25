@@ -1,1 +1,30 @@
-<p>applicant works!</p>
+<div class="container-fluid mt-5">
+  <a [routerLink]="['/applicant', 'create']">Add applicant</a>
+  <input class="form-control float-right col-3 mb-3" placeholder="Find">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Linkedin</th>
+      <th scope="col">Technologies</th>
+      <th scope="col">Options</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let applicant of list">
+      <th scope="row">{{applicant?.id}}</th>
+      <td>{{applicant?.name}}</td>
+      <td>{{applicant?.age}}</td>
+      <td>{{applicant?.linkedin}}</td>
+      <td>{{applicant?.technologies ? getTechnologiesNames(applicant.technologies) : ''}}</td>
+      <td>
+        <a [routerLink]="['/applicant', 'show', applicant?.id]">Show</a> |
+        <a [routerLink]="['/applicant', 'edit', applicant?.id]">Edit</a> |
+        <button class="btn btn-danger" (click)="delete(applicant.id)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

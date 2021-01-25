@@ -1,1 +1,25 @@
-<p>applicant-persist works!</p>
+<form>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" name="name" [disabled]="show" class="form-control" id="name" placeholder="Name" [(ngModel)]="applicant.name">
+  </div>
+  <div class="form-group">
+    <label for="linkedin">Linkedin</label>
+    <input type="text" name="linkedin" [disabled]="show" class="form-control" id="linkedin" placeholder="Linkedin" [(ngModel)]="applicant.linkedin">
+  </div>
+  <div class="form-group">
+    <label for="age">Age</label>
+    <input type="text" name="number" [disabled]="show" class="form-control" id="age" placeholder="Age" [(ngModel)]="applicant.age">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Technologies</label>
+    <select class="form-control" name="technologies" id="exampleFormControlSelect1" [disabled]="show"
+            [(ngModel)]="selectedTechnologies" multiple>
+      <option [value]="technology.id" *ngFor="let technology of technologies">
+        {{technology.name}}
+      </option>
+    </select>
+  </div>
+  <button *ngIf="!show" (click)="save()" type="submit" class="btn btn-primary mb-2">Save</button>
+  <a [routerLink]="['/applicant']">Voltar</a>
+</form>

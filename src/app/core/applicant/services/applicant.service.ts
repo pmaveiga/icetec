@@ -8,6 +8,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApplicantService extends AbstractService<Applicant>{
   constructor(http: HttpClient) {
-    super(http, 'applicant', new Applicant());
+    super(http, 'applicant', Applicant);
   }
 }

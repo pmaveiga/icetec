@@ -7,6 +7,8 @@ import { LoginModule } from './login/login.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApplicantModule } from './applicant/modules/applicant.module';
 import { AuthGuard } from './guard/auth.guard';
+import { CoreModule } from './core/core.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import { AuthGuard } from './guard/auth.guard';
   ],
   imports: [
     BrowserModule,
+    CoreModule,
+    HttpClientModule,
     AppRoutingModule,
     LoginModule,
     BrowserAnimationsModule,

@@ -1,1 +1,9 @@
-<router-outlet></router-outlet>
+<nav class="navbar navbar-light main-navbar" *ngIf="isLogged()">
+  <div class="container-fluid">
+    <img src="/assets/images/logo.png" alt="Logo" width="60" height="56"
+         class="d-inline-block align-middle rounded-circle">
+  </div>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

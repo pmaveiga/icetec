@@ -1,15 +1,21 @@
 <main class="main-container">
   <img src="assets/images/logo.png" alt="Icetec - Logo" class="logo mb-5">
+  <div class="badge badge-danger p-2" *ngIf="message">{{message}}</div>
   <div class="mb-3 row">
     <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-12">
-      <input type="text" class="form-control" id="staticEmail">
+      <input type="text" [(ngModel)]="email" class="form-control" id="staticEmail">
     </div>
   </div>
   <div class="mb-3 row">
     <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
     <div class="col-sm-12">
-      <input type="password" class="form-control" id="inputPassword">
+      <input type="password" [(ngModel)]="password" class="form-control" id="inputPassword">
     </div>
+  </div>
+  <div class="mb-3 row d-flex flex-column pr-3">
+    <button class="btn btn-light align-self-end" (click)="login()">
+      Login
+    </button>
   </div>
 </main>

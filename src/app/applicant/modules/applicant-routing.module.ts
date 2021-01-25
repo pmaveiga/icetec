@@ -6,11 +6,12 @@ import { AuthGuard } from '../../guard/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'applicant', /*canActivate: [AuthGuard],*/ children: [
+    path: 'applicant', canActivate: [AuthGuard], children: [
       { path: '', redirectTo: 'list', pathMatch: 'full' },
       { path: 'list', component: ApplicantListComponent },
       { path: 'create', component: ApplicantPersistComponent },
       { path: 'edit/:id', component: ApplicantPersistComponent },
+      { path: 'show/:id', component: ApplicantPersistComponent },
       { path: '**', redirectTo: '/not-found' }
     ]
   }
